@@ -1,4 +1,4 @@
-import http from '../http'
+import http from '../utils/http'
 import constants from '../constants'
 
 export function getUserList() {

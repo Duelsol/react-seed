@@ -2,7 +2,7 @@ import axios from 'axios'
 import { message } from 'antd'
 import store from '../redux'
 import { actions } from '../redux/modules/app'
-import { getToken, clearUserCache } from '../utils/auth'
+import { getToken, clearUserCache } from './auth'
 
 const defaultHeaders = {
   'Accept': 'application/json',
