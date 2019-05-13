@@ -6,11 +6,11 @@ import { importAll } from '../utils/operation'
 
 export const history = createBrowserHistory()
 const sagaMiddleware = createSagaMiddleware()
-let reducers = {}
-let sagas = []
+const reducers = {}
+const sagas = []
 
 const pushReducers = (array) => {
-  for (let object of array) {
+  for (const object of array) {
     reducers[object.default.name] = object.default
   }
 }
@@ -20,7 +20,7 @@ try {
 }
 
 const pushSagas = (array) => {
-  for (let object of array) {
+  for (const object of array) {
     sagas.push(...Object.values(object))
   }
 }

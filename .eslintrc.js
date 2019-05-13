@@ -30,6 +30,8 @@ module.exports = {
     "no-multiple-empty-lines": "error",
     "no-trailing-spaces": "error",
     "no-unused-vars": ["error", {"argsIgnorePattern": "_"}],
+    "no-var": "error",
+    "prefer-const": "error",
     "quotes": ["error", "single"],
     "react/prop-types": "off",
     "semi": ["error", "never"],

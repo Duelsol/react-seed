@@ -24,7 +24,7 @@ export function validateAlphabets(str) {
 
 /* form表单验证 中文 */
 export function validateChinese(rule, value, callback) {
-  let reg = /[\u4E00-\u9FA5]/
+  const reg = /[\u4E00-\u9FA5]/
   if (reg.test(value)) {
     callback(new Error(rule.message))
   }

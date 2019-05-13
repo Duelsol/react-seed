@@ -16,8 +16,8 @@ export function generateId() {
  */
 export function formatAPI(url, variables = {}) {
   let result = url
-  let keys = Object.keys(variables)
-  for (let key of keys) {
+  const keys = Object.keys(variables)
+  for (const key of keys) {
     result = result.replace(new RegExp('\\{' + key + '\\}', 'g'), variables[key])
   }
   return result
@@ -42,9 +42,9 @@ export function download(url) {
   const baseAPI = process.env.BASE_API || ''
   const fullPath = baseAPI.replace(/"/g, '') + url
   let path = ''
-  let params = {}
+  const params = {}
 
-  let fullPathSplit = fullPath.split('?')
+  const fullPathSplit = fullPath.split('?')
   if (fullPathSplit.length > 1) {
     path = fullPathSplit[0]
     fullPathSplit[1].replace(/([^?&=]+)=([^&]+)/g, (_, k, v) => params[k] = v)
@@ -52,11 +52,11 @@ export function download(url) {
     path = fullPath
   }
 
-  let form = document.createElement('form')
+  const form = document.createElement('form')
   form.action = path
   form.method = 'post'
   for (const key of Object.keys(params)) {
-    let input = document.createElement('input')
+    const input = document.createElement('input')
     input.type = 'hidden'
     input.name = key
     input.value = params[key]
@@ -79,8 +79,8 @@ export function openWindow(path, options = {}, callback) {
   if (typeof path === 'string') {
     target = path.startsWith('/') ? path : '/' + path
   }
-  let windowName = options.windowName || '_blank'
-  let page = window.open('#' + target, windowName)
+  const windowName = options.windowName || '_blank'
+  const page = window.open('#' + target, windowName)
   if (options.title) {
     page.onload = () => {
       page.document.title = options.title
@@ -88,7 +88,7 @@ export function openWindow(path, options = {}, callback) {
     }
   }
   if (typeof callback === 'function') {
-    let loop = setInterval(() => {
+    const loop = setInterval(() => {
       if (page.closed) {
         clearInterval(loop)
         callback()
@@ -115,7 +115,7 @@ export function importAll(r) {
  * @example importDirectory(require.context('src', true, /\.js$/), './pages/example')
  */
 export function importDirectory(r, directory) {
-  let files = []
+  const files = []
   const keys = r.keys()
   keys.forEach(key => {
     if (key.startsWith(directory)) {

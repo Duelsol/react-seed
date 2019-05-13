@@ -58,7 +58,7 @@ service.interceptors.response.use(
 )
 
 const get = (url, params = {}, options = {}) => {
-  let _params = {...params}
+  const _params = {...params}
   // 防止IE浏览器缓存get请求
   _params.t = new Date().getTime()
   return service({
