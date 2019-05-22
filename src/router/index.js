@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom'
 
+/* eslint-disable react/prefer-stateless-function */
 class Router extends Component {
   render() {
     return (

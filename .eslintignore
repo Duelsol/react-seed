@@ -1,6 +1,6 @@
-/build/
-/src/libs/
 /config/
 /scripts/
 /dist/
 /*.js
+/src/serviceWorker.js
+/src/setupProxy.js

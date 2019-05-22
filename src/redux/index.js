@@ -10,9 +10,9 @@ const reducers = {}
 const sagas = []
 
 const pushReducers = (array) => {
-  for (const object of array) {
+  array.forEach(object => {
     reducers[object.default.name] = object.default
-  }
+  })
 }
 try {
   pushReducers(importAll(require.context('src/redux/modules', true, /\.js$/)))
@@ -20,9 +20,9 @@ try {
 }
 
 const pushSagas = (array) => {
-  for (const object of array) {
+  array.forEach(object => {
     sagas.push(...Object.values(object))
-  }
+  })
 }
 try {
   pushSagas(importAll(require.context('src/redux/sagas', true, /\.js$/)))
@@ -32,14 +32,14 @@ try {
 export default createStore(
   combineReducers({
     router: connectRouter(history),
-    ...reducers
+    ...reducers,
   }),
   applyMiddleware(
     routerMiddleware(history),
-    sagaMiddleware
-  )
+    sagaMiddleware,
+  ),
 )
 
-for (const saga of sagas) {
+sagas.forEach(saga => {
   sagaMiddleware.run(saga)
-}
+})

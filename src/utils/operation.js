@@ -17,9 +17,9 @@ export function generateId() {
 export function formatAPI(url, variables = {}) {
   let result = url
   const keys = Object.keys(variables)
-  for (const key of keys) {
-    result = result.replace(new RegExp('\\{' + key + '\\}', 'g'), variables[key])
-  }
+  keys.forEach(key => {
+    result = result.replace(new RegExp(`\\{${key}\\}`, 'g'), variables[key])
+  })
   return result
 }
 
@@ -46,8 +46,8 @@ export function download(url) {
 
   const fullPathSplit = fullPath.split('?')
   if (fullPathSplit.length > 1) {
-    path = fullPathSplit[0]
-    fullPathSplit[1].replace(/([^?&=]+)=([^&]+)/g, (_, k, v) => params[k] = v)
+    [path] = fullPathSplit
+    fullPathSplit[1].replace(/([^?&=]+)=([^&]+)/g, (_, k, v) => { params[k] = v })
   } else {
     path = fullPath
   }
@@ -55,13 +55,13 @@ export function download(url) {
   const form = document.createElement('form')
   form.action = path
   form.method = 'post'
-  for (const key of Object.keys(params)) {
+  Object.keys(params).forEach(key => {
     const input = document.createElement('input')
     input.type = 'hidden'
     input.name = key
     input.value = params[key]
     form.appendChild(input)
-  }
+  })
   document.body.appendChild(form)
   form.submit()
   form.parentNode.removeChild(form)
@@ -77,10 +77,10 @@ export function download(url) {
 export function openWindow(path, options = {}, callback) {
   let target = '/'
   if (typeof path === 'string') {
-    target = path.startsWith('/') ? path : '/' + path
+    target = path.startsWith('/') ? path : `/${path}`
   }
   const windowName = options.windowName || '_blank'
-  const page = window.open('#' + target, windowName)
+  const page = window.open(`#${target}`, windowName)
   if (options.title) {
     page.onload = () => {
       page.document.title = options.title

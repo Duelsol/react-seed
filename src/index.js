@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
-import * as serviceWorker from './serviceWorker'
 import { Provider } from 'react-redux'
-import store, { history } from './redux'
 import { ConnectedRouter } from 'connected-react-router'
 import { LocaleProvider } from 'antd'
 import zhCN from 'antd/lib/locale-provider/zh_CN'
+import App from './App'
+import * as serviceWorker from './serviceWorker'
+import store, { history } from './redux'
 import './index.css'
 
 ReactDOM.render(
@@ -17,7 +17,7 @@ ReactDOM.render(
       </ConnectedRouter>
     </Provider>
   </LocaleProvider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 )
 
 // If you want your app to work offline and load faster, you can change

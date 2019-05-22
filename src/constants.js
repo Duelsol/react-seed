@@ -6,5 +6,5 @@ const DEFAULT_TITLE = 'React Seed'
 
 export default {
   BASE_API,
-  DEFAULT_TITLE
+  DEFAULT_TITLE,
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { actions } from './redux/modules/app'
 import { Modal } from 'antd'
+import { actions } from 'src/redux/modules/app'
 import Main from './components/Main'
 
 class Layout extends Component {
@@ -12,7 +12,7 @@ class Layout extends Component {
   render() {
     return (
       <React.Fragment>
-        <Main></Main>
+        <Main />
         <Modal
           title="提示"
           visible={this.props.invalidUserAlertVisible}
@@ -29,7 +29,7 @@ class Layout extends Component {
 
 function mapStateToProps(state) {
   return {
-    invalidUserAlertVisible: state.app.invalidUserAlertVisible
+    invalidUserAlertVisible: state.app.invalidUserAlertVisible,
   }
 }
 

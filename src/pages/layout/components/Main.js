@@ -1,10 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Router from 'src/router'
 
-export default class Main extends Component {
-  render() {
-    return (
-      <Router />
-    )
-  }
+export default function Main() {
+  return (
+    <Router />
+  )
 }
